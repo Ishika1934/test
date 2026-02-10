@@ -8,7 +8,10 @@ import { errorHandler } from './middleware/errorMiddleware.js';
 const app = express();
 
 app.use(helmet()); // Security headers
-app.use(cors());
+app.use(cors({
+    origin: true, // Allows all origins; restrict to your Vercel URL after deployment
+    credentials: true,
+}));
 app.use(express.json({ limit: '10kb' })); // Body size limit for security
 
 // Routes
